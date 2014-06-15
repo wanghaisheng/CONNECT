@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.connectopensource</groupId>
         <artifactId>Product</artifactId>
-        <version>4.3.0-SNAPSHOT</version>
+        <version>4.4.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Production</artifactId>
@@ -17,7 +17,6 @@
         <module>Adapters</module>
         <module>Gateway</module>
         <module>Deploy</module>
-        <module>Utilities</module>
     </modules>
     <dependencies>
         <dependency>

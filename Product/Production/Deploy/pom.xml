@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.connectopensource</groupId>
         <artifactId>Production</artifactId>
-        <version>4.3.0-SNAPSHOT</version>
+        <version>4.4.0-SNAPSHOT</version>
     </parent>
     <artifactId>Deploy</artifactId>
     <packaging>pom</packaging>
@@ -18,12 +18,12 @@
         <module>dr-dependencies</module>
         <module>ds-dependencies</module>
         <module>gui-dependencies</module>
-        <module>hiem-dependencies</module>
         <module>pd-dependencies</module>
+        <module>admingui-dependencies</module>
         <module>ear</module>
-
         <module>ear/glassfish</module>
     </modules>
+    <!--properties> <findbugs.skip>true</findbugs.skip> </properties -->
     <build>
         <pluginManagement>
             <plugins>
@@ -35,8 +35,18 @@
             </plugins>
         </pluginManagement>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
     <profiles>
-
         <profile>
             <id>wasce</id>
             <modules>

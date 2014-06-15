@@ -29,14 +29,18 @@ package gov.hhs.fha.nhinc.patientcorrelation.nhinc.config;
 import gov.hhs.fha.nhinc.properties.PropertyAccessor;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.log4j.Logger;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  * 
@@ -92,7 +96,16 @@ public class ConfigurationManager {
 
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            
+            final String FEATURE = "http://xml.org/sax/features/external-general-entities";
+            dbf.setFeature(FEATURE, false);
+            
+            //For Xerces 2
+            final String FEATURE_2 = "http://apache.org/xml/features/disallow-doctype-decl";
+            dbf.setFeature(FEATURE_2, true);
+            
             DocumentBuilder db = dbf.newDocumentBuilder();
+            
             Document doc = db.parse(file);
             doc.getDocumentElement().normalize();
 
@@ -125,9 +138,16 @@ public class ConfigurationManager {
 
                 result.getExpirations().add(expItem);
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             LOG.error("unable to load PCConfiguration file", e);
-            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            LOG.error("unable to load PCConfiguration file", e);
+        } catch (ParserConfigurationException e) {
+            LOG.error("unable to load PCConfiguration file", e);
+        } catch (DOMException e) {
+            LOG.error("unable to load PCConfiguration file", e);
+        } catch (SAXException e) {
+            LOG.error("unable to load PCConfiguration file", e);
         }
 
         return result;

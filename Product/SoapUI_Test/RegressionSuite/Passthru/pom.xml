@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.connectopensource</groupId>
 		<artifactId>RegressionSuite</artifactId>
-		<version>4.3.0-SNAPSHOT</version>
+		<version>4.4.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>Passthru</artifactId>
 	<packaging>pom</packaging>
@@ -24,12 +24,12 @@
             <module>Admin-Distribution-Passthrough</module>
             <module>AuditLogging-Passthrough</module>
             <module>DocQueryAdditionalStoredQueries</module>
-            <module>DocQueryErrorCodesPassthru</module>
+            <!--module>DocQueryErrorCodesPassthru</module-->
             <module>DocQueryRetrieveSelfTest</module>
             <module>DocQueryXDSErrors</module>
             <module>EventLogging-Passthrough</module>
-            <module>NHINCReceivingXDRAsyncRequestTests</module>
-            <module>NHINCReceivingXDRAsyncResponseTests</module>
+            <!--module>NHINCReceivingXDRAsyncRequestTests</module>
+            <module>NHINCReceivingXDRAsyncResponseTests</module-->
         </modules>
 	</profile>
     </profiles>

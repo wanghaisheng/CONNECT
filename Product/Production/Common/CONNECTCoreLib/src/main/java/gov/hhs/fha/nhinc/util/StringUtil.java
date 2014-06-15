@@ -26,7 +26,7 @@
  */
 package gov.hhs.fha.nhinc.util;
 
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.StringTokenizer;
@@ -39,42 +39,6 @@ import java.util.StringTokenizer;
 public class StringUtil {
 
     public static final String UTF8_CHARSET = "UTF-8";
-
-    /**
-     * This method reads the entire contents of a text file and returns the contents in a string variable.
-     *
-     * @param sFileName The path and location of the text file.
-     * @return The contents that was read in.
-     */
-    public static String readTextFile(String sFileName) throws UtilException {
-        String sText = "";
-        InputStreamReader frTextFile = null;
-
-        try {
-
-            frTextFile = new InputStreamReader(new FileInputStream(sFileName), StringUtil.UTF8_CHARSET);
-            char caBuf[] = new char[1024];
-            int iLen = 0;
-            StringBuffer sbText = new StringBuffer();
-            while ((iLen = frTextFile.read(caBuf, 0, 1024)) != -1) {
-                sbText.append(caBuf, 0, iLen);
-            }
-
-            sText = sbText.toString();
-        } catch (Exception e) {
-            String sErrorMessage = "Failed to read text file: " + sFileName + ". Error: " + e.getMessage();
-            throw new UtilException(sErrorMessage, e);
-        } finally {
-            if (frTextFile != null) {
-                try {
-                    frTextFile.close();
-                } catch (Exception e) {
-                }
-            }
-        }
-
-        return sText;
-    }
 
     /**
      * Extracts required string by removing the tokens given as input.
@@ -110,7 +74,6 @@ public class StringUtil {
         } else {
             return "[CDATA[]]";
         }
-
     }
 
     /**
@@ -126,7 +89,6 @@ public class StringUtil {
         } else {
             return sText;
         }
-
     }
 
     /**

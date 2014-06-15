@@ -3,8 +3,6 @@ GRANT USAGE ON *.* TO nhincuser identified by 'nhincpass';
 DROP USER 'nhincuser';
 DELETE FROM mysql.user WHERE User = 'nhincuser';
 
-DROP DATABASE IF EXISTS subscriptionrepository;
-
 DROP DATABASE IF EXISTS assigningauthoritydb;
 
 DROP DATABASE IF EXISTS auditrepo;
@@ -15,8 +13,6 @@ DROP DATABASE IF EXISTS docrepository;
 
 DROP DATABASE IF EXISTS patientcorrelationdb;
 
-DROP DATABASE IF EXISTS lift;
-
 DROP DATABASE IF EXISTS asyncmsgs;
 
 DROP DATABASE IF EXISTS logging;
@@ -26,5 +22,7 @@ DROP DATABASE IF EXISTS patientdb;
 DROP DATABASE IF EXISTS transrepo;
 
 DROP DATABASE IF EXISTS eventdb;
+
+DROP DATABASE IF EXISTS adminguidb;
 
 FLUSH PRIVILEGES;

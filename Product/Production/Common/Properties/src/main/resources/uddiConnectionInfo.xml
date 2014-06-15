@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <businessDetail xmlns="urn:uddi-org:api_v3" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
     <businessEntity businessKey="uddi:nhincnode:1.1">
-        <name xml:lang="en">DoD</name>
+        <name xml:lang="en">Gateway 1</name>
         <businessServices>
 
             <!--  Query for Documents  -->
@@ -48,51 +48,6 @@
                 </bindingTemplates>
                 <categoryBag>
                     <keyedReference tModelKey="uddi:nhin:standard-servicenames" keyName="RetrieveDocuments" keyValue="RetrieveDocuments"/>
-                </categoryBag>
-            </businessService>
-
-            <!--  HIEM  -->
-
-            <businessService serviceKey="uddi:nhincnode:notificationproducer" businessKey="uddi:testnhieonenode:1.1">
-                <name xml:lang="en">HIEM</name>
-                <bindingTemplates>
-                    <bindingTemplate bindingKey="uddi:nhincnode:notificationproducer" serviceKey="uddi:nhincnode:notificationproducer">
-                        <accessPoint useType="endPoint">https://localhost:8181/Gateway/HIEM/2_0/NhinService/NotificationProducerService/HiemSubscription</accessPoint>
-                        <categoryBag>                        
-                            <keyedReference tModelKey="uddi:nhin:versionofservice" keyName="" keyValue="2.0"/>
-                        </categoryBag>
-                    </bindingTemplate>
-                </bindingTemplates>
-                <categoryBag>
-                    <keyedReference tModelKey="uddi:nhin:standard-servicenames" keyName="notificationproducer" keyValue="notificationproducer"/>
-                </categoryBag>
-            </businessService>
-            <businessService serviceKey="uddi:nhincnode:notificationconsumer" businessKey="uddi:testnhieonenode:1.1">
-                <name xml:lang="en">notificationconsumer</name>
-                <bindingTemplates>
-                    <bindingTemplate bindingKey="uddi:nhincnode:notificationconsumer" serviceKey="uddi:nhincnode:notificationconsumer">
-                        <accessPoint useType="endPoint">https://localhost:8181/Gateway/HIEM/2_0/NhinService/NotificationConsumerService/HiemNotify</accessPoint>
-                        <categoryBag>
-                            <keyedReference tModelKey="uddi:nhin:versionofservice" keyName="" keyValue="2.0"/>
-                        </categoryBag>
-                    </bindingTemplate>
-                </bindingTemplates>
-                <categoryBag>
-                    <keyedReference tModelKey="uddi:nhin:standard-servicenames" keyName="notificationconsumer" keyValue="notificationconsumer"/>
-                </categoryBag>
-            </businessService>
-            <businessService serviceKey="uddi:nhincnode:subscriptionmanager" businessKey="uddi:testnhieonenode:1.1">
-                <name xml:lang="en">subscriptionmanager</name>
-                <bindingTemplates>
-                    <bindingTemplate bindingKey="uddi:nhincnode:subscriptionmanager" serviceKey="uddi:nhincnode:subscriptionmanager">
-                        <accessPoint useType="endPoint">https://localhost:8181/Gateway/HIEM/2_0/NhinService/SubscriptionManagerService/HiemUnsubscribe</accessPoint>
-                        <categoryBag>
-                            <keyedReference tModelKey="uddi:nhin:versionofservice" keyName="" keyValue="2.0"/>
-                        </categoryBag>
-                    </bindingTemplate>
-                </bindingTemplates>
-                <categoryBag>
-                    <keyedReference tModelKey="uddi:nhin:standard-servicenames" keyName="subscriptionmanager" keyValue="subscriptionmanager"/>
                 </categoryBag>
             </businessService>
 
@@ -242,7 +197,7 @@
     <!--  Gateway 2.2  -->
 
     <businessEntity businessKey="uddi:nhincnode:2.2">
-        <name xml:lang="en">DoD</name>
+        <name xml:lang="en">Gateway 2</name>
         <businessServices>
 
             <!--  Query for Documents -->
@@ -254,6 +209,11 @@
                         <accessPoint useType="endPoint">https://localhost:8181/Gateway/DocumentQuery/2_0/NhinService/RespondingGateway_Query_Service/DocQuery</accessPoint>
                         <categoryBag>
                             <keyedReference tModelKey="uddi:nhin:versionofservice" keyName="" keyValue="2.0"/>
+                        </categoryBag>
+                    </bindingTemplate>
+					<bindingTemplate bindingKey="uddi:nhincnode:QueryForDocuments" serviceKey="uddi:nhincnode:QueryForDocuments">
+                        <accessPoint useType="endPoint">https://localhost:8181/Gateway/DocumentQuery/3_0/NhinService/RespondingGateway_Query_Service/DocQuery</accessPoint>
+                        <categoryBag>
                             <keyedReference tModelKey="uddi:nhin:versionofservice" keyName="" keyValue="3.0"/>
                         </categoryBag>
                     </bindingTemplate>
@@ -283,51 +243,6 @@
                 </bindingTemplates>
                 <categoryBag>
                     <keyedReference tModelKey="uddi:nhin:standard-servicenames" keyName="RetrieveDocuments" keyValue="RetrieveDocuments"/>
-                </categoryBag>
-            </businessService>
-
-            <!--  HIEM  -->
-
-            <businessService serviceKey="uddi:nhincnode:notificationproducer" businessKey="uddi:testnhieonenode:2.2">
-                <name xml:lang="en">HIEM</name>
-                <bindingTemplates>
-                    <bindingTemplate bindingKey="uddi:nhincnode:notificationproducer" serviceKey="uddi:nhincnode:notificationproducer">
-                        <accessPoint useType="endPoint">https://localhost:8181/Gateway/HIEM/2_0/NhinService/NotificationProducerService/HiemSubscription</accessPoint>
-                        <categoryBag>                     
-                            <keyedReference tModelKey="uddi:nhin:versionofservice" keyName="" keyValue="2.0"/>
-                        </categoryBag>
-                    </bindingTemplate>
-                </bindingTemplates>
-                <categoryBag>
-                    <keyedReference tModelKey="uddi:nhin:standard-servicenames" keyName="notificationproducer" keyValue="notificationproducer"/>
-                </categoryBag>
-            </businessService>
-            <businessService serviceKey="uddi:nhincnode:notificationconsumer" businessKey="uddi:testnhieonenode:2.2">
-                <name xml:lang="en">notificationconsumer</name>
-                <bindingTemplates>
-                    <bindingTemplate bindingKey="uddi:nhincnode:notificationconsumer" serviceKey="uddi:nhincnode:notificationconsumer">
-                        <accessPoint useType="endPoint">https://localhost:8181/Gateway/HIEM/2_0/NhinService/NotificationConsumerService/HiemNotify</accessPoint>
-                        <categoryBag>                     
-                            <keyedReference tModelKey="uddi:nhin:versionofservice" keyName="" keyValue="2.0"/>
-                        </categoryBag>
-                    </bindingTemplate>
-                </bindingTemplates>
-                <categoryBag>
-                    <keyedReference tModelKey="uddi:nhin:standard-servicenames" keyName="notificationconsumer" keyValue="notificationconsumer"/>
-                </categoryBag>
-            </businessService>
-            <businessService serviceKey="uddi:nhincnode:subscriptionmanager" businessKey="uddi:testnhieonenode:2.2">
-                <name xml:lang="en">subscriptionmanager</name>
-                <bindingTemplates>
-                    <bindingTemplate bindingKey="uddi:nhincnode:subscriptionmanager" serviceKey="uddi:nhincnode:subscriptionmanager">
-                        <accessPoint useType="endPoint">https://localhost:8181/Gateway/HIEM/2_0/NhinService/SubscriptionManagerService/HiemUnsubscribe</accessPoint>
-                        <categoryBag>             
-                            <keyedReference tModelKey="uddi:nhin:versionofservice" keyName="" keyValue="2.0"/>
-                        </categoryBag>
-                    </bindingTemplate>
-                </bindingTemplates>
-                <categoryBag>
-                    <keyedReference tModelKey="uddi:nhin:standard-servicenames" keyName="subscriptionmanager" keyValue="subscriptionmanager"/>
                 </categoryBag>
             </businessService>
 

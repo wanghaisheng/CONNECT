@@ -88,27 +88,25 @@ public class TLSClientParametersFactory {
         SSLContext context = null;
         try {
             context = SSLContext.getDefault();
+            SSLSocketFactory factory = context.getSocketFactory();
+            if (factory != null) {
+                tlsCP.setSSLSocketFactory(factory);
+            } else {
+                throw new RuntimeException("Couldn't get the SSLSocketFactory.");
+            }
+            tlsCP.setDisableCNCheck(true);
         } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        SSLSocketFactory factory = context.getSocketFactory();
-        if (factory != null) {
-            tlsCP.setSSLSocketFactory(factory);
-        } else {
-            //tlsCP.setKeyManagers(keyFactory.getKeyManagers());
-            //tlsCP.setTrustManagers(trustFactory.getTrustManagers());
-            throw new RuntimeException("Couldn't get the SSLSocketFactory.");
-        }
-        tlsCP.setDisableCNCheck(true);
+            LOG.error(e, e);
+            throw new RuntimeException("Could not create SSL Context.", e);
+        }        
         
         return tlsCP;
     }
 
-    private char[] getKeystorePassword() {
+    private char[] getKeystorePassword() throws UnrecoverableKeyException {
         String keystorePassword = System.getProperty("javax.net.ssl.keyStorePassword");
-        if (keystorePassword == null) {
-            keystorePassword = "";
+        if (keystorePassword == null || keystorePassword.isEmpty()) {
+            throw new UnrecoverableKeyException("Password for key is null or empty.");
         }
 
         return keystorePassword.toCharArray();

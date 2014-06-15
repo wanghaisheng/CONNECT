@@ -588,7 +588,7 @@ public class Page2 extends AbstractPageBean {
                                                         && idxId.getRoot() != null) {
                                                     if (SSA_OID.equals(idxId.getRoot())) {
                                                         resultPatientSSN = idxId.getExtension();
-                                                        LOG.debug(resultPatientSSN + " found with SSA Authority: "
+                                                        LOG.debug("Patient SSN found with SSA Authority: "
                                                                 + idxId.getRoot());
                                                     }
                                                 }
@@ -630,8 +630,7 @@ public class Page2 extends AbstractPageBean {
                         LOG.error("No subject data found in the MPI candidate");
                     }
                 } else {
-                    LOG.error("No MPI candidates where found matching " + firstName + " " + lastName + " org: " + orgId
-                            + " assigning authority: " + assigningAuthId);
+                    LOG.error("No MPI candidates where found matching for the given firstName, lastName, Org Id, Assigning Authority");
                 }
                 if (getPatientSearchDataList().isEmpty()) {
                     this.patientInfo.setText("No MPI candidates where found matching " + firstName + " " + lastName
@@ -709,8 +708,10 @@ public class Page2 extends AbstractPageBean {
 
         SearchData searchData = (SearchData) getBean("SearchData");
 
-        searchData.setPatientID(foundPatient.getPatientId());
-
+        if (foundPatient != null) {
+            searchData.setPatientID(foundPatient.getPatientId());
+        }
+        
         return null;
     }
 

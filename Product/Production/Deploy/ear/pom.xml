@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.connectopensource</groupId>
         <artifactId>Deploy</artifactId>
-        <version>4.3.0-SNAPSHOT</version>
+        <version>4.4.0-SNAPSHOT</version>
     </parent>
     <artifactId>ear</artifactId>
     <packaging>pom</packaging>
@@ -17,10 +17,10 @@
         <dq.excluded>true</dq.excluded>
         <dr.excluded>true</dr.excluded>
         <ds.excluded>true</ds.excluded>
-        <hiem.excluded>true</hiem.excluded>
         <gui.excluded>true</gui.excluded>
         <pd.excluded>true</pd.excluded>
         <direct.excluded>true</direct.excluded>
+        <admingui.excluded>true</admingui.excluded>
     </properties>
     <dependencies>
         <dependency>
@@ -50,13 +50,6 @@
             <version>${project.parent.version}</version>
             <type>pom</type>
         </dependency>
-        <!-- Hiem -->
-        <dependency>
-            <groupId>org.connectopensource</groupId>
-            <artifactId>hiem-dependencies</artifactId>
-            <version>${project.parent.version}</version>
-            <type>pom</type>
-        </dependency>
         <!-- DS -->
         <dependency>
             <groupId>org.connectopensource</groupId>
@@ -78,14 +71,19 @@
             <version>${project.parent.version}</version>
             <type>pom</type>
         </dependency>
-         <!-- GUI -->
+        <!-- GUI -->
         <dependency>
             <groupId>org.connectopensource</groupId>
             <artifactId>gui-dependencies</artifactId>
             <version>${project.parent.version}</version>
             <type>pom</type>
         </dependency>
-
+        <dependency>
+            <groupId>org.connectopensource</groupId>
+            <artifactId>admingui-dependencies</artifactId>
+            <version>${project.parent.version}</version>
+            <type>pom</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -193,17 +191,11 @@
                             <contextRoot>/Adapter/DocumentSubmission/A_0</contextRoot>
                             <excluded>${ds.excluded}</excluded>
                         </webModule>
-                         <webModule>
+                        <webModule>
                             <groupId>org.connectopensource</groupId>
                             <artifactId>Direct</artifactId>
                             <contextRoot>/Direct</contextRoot>
                             <excluded>${direct.excluded}</excluded>
-                        </webModule>
-                        <webModule>
-                            <groupId>org.connectopensource</groupId>
-                            <artifactId>HIEM_20</artifactId>
-                            <contextRoot>/Gateway/HIEM/2_0</contextRoot>
-                            <excluded>${hiem.excluded}</excluded>
                         </webModule>
                         <webModule>
                             <groupId>org.connectopensource</groupId>
@@ -223,12 +215,21 @@
                             <contextRoot>/CONNECTUniversalClientGUI</contextRoot>
                             <excluded>${gui.excluded}</excluded>
                         </webModule>
+                        <webModule>
+                            <groupId>org.connectopensource</groupId>
+                            <artifactId>CONNECTAdminGUI</artifactId>
+                            <contextRoot>/CONNECTAdminGUI</contextRoot>
+                            <excluded>${admingui.excluded}</excluded>
+                        </webModule>
                     </modules>
                     <version>5</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <skinnyWars>true</skinnyWars>
-                    <!-- this causes all archives to be exploded on server 
-                        SLOW!!! <includeLibInApplicationXml>true</includeLibInApplicationXml> -->
+                    <packagingExcludes>
+                        lib/Properties-*.jar
+                    </packagingExcludes>
+
+                    <!-- this causes all archives to be exploded on server SLOW!!! <includeLibInApplicationXml>true</includeLibInApplicationXml> -->
                 </configuration>
             </plugin>
         </plugins>
@@ -262,7 +263,6 @@
             <properties>
                 <dq.excluded>false</dq.excluded>
             </properties>
-
         </profile>
         <profile>
             <id>DR</id>
@@ -281,17 +281,6 @@
             <properties>
                 <ds.excluded>false</ds.excluded>
             </properties>
-
-        </profile>
-        <profile>
-            <id>HIEM</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <hiem.excluded>false</hiem.excluded>
-            </properties>
-
         </profile>
         <profile>
             <id>GUI</id>
@@ -310,7 +299,15 @@
             <properties>
                 <direct.excluded>false</direct.excluded>
             </properties>
-
+        </profile>
+        <profile>
+            <id>AdminGUI</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <admingui.excluded>false</admingui.excluded>
+            </properties>
         </profile>
     </profiles>
 </project>

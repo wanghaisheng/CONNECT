@@ -41,7 +41,7 @@ import org.apache.cxf.ws.addressing.WSAddressingFeature;
  * @author akong
  *
  */
-public class CachingCXFSecuredServicePortBuilder<T> extends CachingCXFServicePortBuilder<T> {
+public class CachingCXFSecuredServicePortBuilder<T> extends CachingCXFWSAServicePortBuilder<T> {
     
     private static Map<Class<?>, Object> CACHED_PORTS = new HashMap<Class<?>, Object>();
     
@@ -73,11 +73,5 @@ public class CachingCXFSecuredServicePortBuilder<T> extends CachingCXFServicePor
         serviceEndpoint = new TLSClientServiceEndpointDecorator<T>(serviceEndpoint);
         serviceEndpoint = new WsSecurityServiceEndpointDecorator<T>(serviceEndpoint);
         serviceEndpoint.configure();
-    }
-    
-    @Override
-    protected void configureJaxWsProxyFactory(JaxWsProxyFactoryBean factory) {
-        super.configureJaxWsProxyFactory(factory);
-        factory.getFeatures().add(new WSAddressingFeature());
     }
 }

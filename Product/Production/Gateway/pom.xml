@@ -2,7 +2,7 @@
     <parent>
         <groupId>org.connectopensource</groupId>
         <artifactId>Production</artifactId>
-        <version>4.3.0-SNAPSHOT</version>
+        <version>4.4.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>Gateway</artifactId>
@@ -17,7 +17,6 @@
         <module>DocumentRetrieve_30</module>
         <module>DocumentSubmission_11</module>
         <module>DocumentSubmission_20</module>
-        <module>HIEM_20</module>
         <module>PatientDiscovery_10</module>
         <module>CONNECTGatewayWeb</module>
         <module>Direct</module>
